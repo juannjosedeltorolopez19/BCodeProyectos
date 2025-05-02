@@ -1,0 +1,8 @@
+/* styles.css   */
+h1{
+    text-align: center;
+    font-size: 4rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 0 0 10px #03fccea4;
+    color: red;
+}
