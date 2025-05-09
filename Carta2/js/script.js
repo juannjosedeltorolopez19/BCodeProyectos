@@ -1,21 +1,28 @@
 // script.js
-function createLetter() {
-    const name = document.getElementById('motherName').value || 'Mamá';
-    document.getElementById('letterTitle').textContent = `Querida Mamá ${name}`;
-    document.getElementById('formContainer').classList.add('opacity-0', 'scale-75');
-    setTimeout(() => {
-        document.getElementById('formContainer').classList.add('hidden');
-        document.getElementById('letterContainer').classList.remove('hidden');
-        document.getElementById('letterContainer').classList.add('animate-[letterOpen_0.6s_ease-out]');
-    }, 300);
-}
+function mostrarCarta() {
+            const nombre = document.getElementById('nombreMama').value;
+            if (!nombre.trim()) return alert('¡Necesito saber cómo te llamas, reina mami! 👑');
+            
+            document.getElementById('formulario').style.display = 'none';
+            document.getElementById('modal').style.display = 'flex';
+            document.getElementById('nombreInsertado').textContent = nombre;
+        }
 
-function closeLetter() {
-    document.getElementById('letterContainer').classList.remove('animate-[letterOpen_0.6s_ease-out]');
-    document.getElementById('letterContainer').classList.add('animate-[letterOpen_0.6s_ease-out_reverse]');
-    setTimeout(() => {
-        document.getElementById('letterContainer').classList.add('hidden');
-        document.getElementById('formContainer').classList.remove('hidden', 'opacity-0', 'scale-75');
-        document.getElementById('formContainer').classList.add('animate-[fadeIn_0.4s_ease-in]');
-    }, 500);
-}            
+        function cerrarModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('formulario').style.display = 'block';
+        }
+
+        window.onclick = function(e) {
+            if (e.target === document.getElementById('modal')) cerrarModal();
+        }
+
+        document.querySelectorAll('.boton-magico').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            btn.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
