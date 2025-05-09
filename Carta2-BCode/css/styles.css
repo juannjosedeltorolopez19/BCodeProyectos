@@ -1,0 +1,23 @@
+/* styles.css   */
+@keyframes float {
+        0% {
+                transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+                transform: translateY(-20px) rotate(10deg);
+        }
+
+        100% {
+                transform: translateY(0) rotate(0deg);
+        }
+}
+
+.floral-border {
+        background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox='0 0 84 84' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M41.5 3.5C25.5 9.16667 10.7 20.7 3.5 41.5C9.16667 57.5 20.7 72.3 41.5 79.5C57.5 73.8333 72.3 62.3 79.5 41.5C73.8333 25.5 62.3 10.7 41.5 3.5Z' stroke='%23fb7185' stroke-width='2'/%3E%3C/svg%3E");
+        background-size: 80px;
+}
+
+.heart-float {
+        animation: float 4s ease-in-out infinite;
+}
