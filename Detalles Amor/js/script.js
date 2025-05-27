@@ -34,7 +34,7 @@ function initLoveEffect() {
     }, 100);
 }
 
-// Ajustes responsivos
+
 function handleResize() {
     document.querySelectorAll('.text-container').forEach(line => {
         line.textContent = MATRIX_TEXT.repeat(window.innerWidth / 50);
