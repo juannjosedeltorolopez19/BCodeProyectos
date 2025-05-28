@@ -47,7 +47,7 @@ function handleResize() {
 // Inicialización
 window.addEventListener('load', () => {
     initMatrix();
-    initLoveEffect();
+    initLoveEffect();y
     handleResize();
 });
 
