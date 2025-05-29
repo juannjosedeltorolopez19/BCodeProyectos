@@ -75,7 +75,7 @@ loader.load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetike
         const texture = new THREE.CanvasTexture(canvas);
 
 
-        const textGeometry = new THREE.TextGeometry('BCode pro', {
+        const textGeometry = new THREE.TextGeometry('Besitos mua mua mua', {
             font: font,
             size: 2.5,
             height: 0.6,
