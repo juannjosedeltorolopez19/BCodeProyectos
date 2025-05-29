@@ -1,6 +1,6 @@
 // Configuración Matrix
 const LINE_COUNT = 30;
-const MATRIX_TEXT = "TE AMO ";
+const MATRIX_TEXT = "🌻👑 ";
 const LOVE_CHARS = [""];
 
 // Inicializar Matrix
