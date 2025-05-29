@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you marry me?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #yes-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+        }
+
+        #no-button {
+            background-color: #f44336; /* Red */
+            color: white;
+            border: none;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¿Te casarías conmigo?</h1>
+
+    <div class="container">
+        <button id="yes-button">¡Sí!</button>
+        <button id="no-button">No</button>
+    </div>
+
+    <div id="message"></div>
+
+    <script>
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        const message = document.getElementById('message');
+
+        yesButton.addEventListener('click', () => {
+            message.textContent = "Kai: ¡Sabía que dirías que sí! ¡Te amo!";
+            message.style.color = "green";
+
+            // spiderman enojado 
+        });
+
+        noButton.addEventListener('click', () => {
+            message.textContent = ":(  Kai: ¿Estás segura?";
+            message.style.color = "red";
+
+
+            //Opcional: hacer que el botón de "no" se mueva aleatoriamente
+            //Comentado por defecto para evitar molestar al usuario, descomentar para activar
+             /*
+            const width = window.innerWidth - noButton.offsetWidth;
+            const height = window.innerHeight- noButton.offsetHeight;
+            noButton.style.position = 'absolute';
+            noButton.style.left = Math.random() * width + 'px';
+            noButton.style.top = Math.random() * height + 'px';
+            */
+
+        });
+    </script>
+
+</body>
+</html>
