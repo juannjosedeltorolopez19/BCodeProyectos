@@ -1,91 +1,112 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will you marry me?</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: sans-serif;
-            background-color: #f0f0f0;
-        }
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Matrix Love Effect</title>
+        <style>
+            body {
+                  margin: 0;
+                        overflow: hidden;
+                              background: black;
+                                  }
 
-        .container {
-            display: flex;
-            gap: 20px;
-        }
+                                      canvas {
+                                            display: block;
+                                                }
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+                                                    #controls {
+                                                          position: fixed;
+                                                                top: 10px;
+                                                                      left: 10px;
+                                                                            z-index: 100;
+                                                                                  background: rgba(0, 0, 0, 0.7);
+                                                                                        padding: 10px;
+                                                                                              border-radius: 8px;
+                                                                                                  }
 
-        #yes-button {
-            background-color: #4CAF50; /* Green */
-            color: white;
-            border: none;
-        }
+                                                                                                      #controls label {
+                                                                                                            color: white;
+                                                                                                                  display: block;
+                                                                                                                        margin-top: 5px;
+                                                                                                                            }
 
-        #no-button {
-            background-color: #f44336; /* Red */
-            color: white;
-            border: none;
-        }
+                                                                                                                                #controls input[type="color"],
+                                                                                                                                    #controls input[type="text"],
+                                                                                                                                        #controls input[type="range"] {
+                                                                                                                                              width: 100%;
+                                                                                                                                                  }
+                                                                                                                                                    </style>
+                                                                                                                                                    </head>
+                                                                                                                                                    <body>
+                                                                                                                                                      <div id="controls">
+                                                                                                                                                          <label>Velocidad:
+                                                                                                                                                                <input type="range" id="speed" min="1" max="30" value="10">
+                                                                                                                                                                    </label>
+                                                                                                                                                                        <label>Color:
+                                                                                                                                                                              <input type="color" id="color" value="#ff3399">
+                                                                                                                                                                                  </label>
+                                                                                                                                                                                      <label>Texto:
+                                                                                                                                                                                            <input type="text" id="text" value="My Love">
+                                                                                                                                                                                                </label>
+                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                    <canvas id="matrix"></canvas>
 
-        #message {
-            margin-top: 20px;
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
+                                                                                                                                                                                                      <script>
+                                                                                                                                                                                                          const canvas = document.getElementById("matrix");
+                                                                                                                                                                                                              const ctx = canvas.getContext("2d");
 
-    <h1>¿Te casarías conmigo?</h1>
+                                                                                                                                                                                                                  canvas.width = window.innerWidth;
+                                                                                                                                                                                                                      canvas.height = window.innerHeight;
 
-    <div class="container">
-        <button id="yes-button">¡Sí!</button>
-        <button id="no-button">No</button>
-    </div>
+                                                                                                                                                                                                                          let fontSize = 18;
+                                                                                                                                                                                                                              let columns = canvas.width / fontSize;
+                                                                                                                                                                                                                                  let drops = Array(Math.floor(columns)).fill(1);
 
-    <div id="message"></div>
+                                                                                                                                                                                                                                      const speedInput = document.getElementById("speed");
+                                                                                                                                                                                                                                          const colorInput = document.getElementById("color");
+                                                                                                                                                                                                                                              const textInput = document.getElementById("text");
 
-    <script>
-        const yesButton = document.getElementById('yes-button');
-        const noButton = document.getElementById('no-button');
-        const message = document.getElementById('message');
+                                                                                                                                                                                                                                                  function draw() {
+                                                                                                                                                                                                                                                        const speed = parseInt(speedInput.value);
+                                                                                                                                                                                                                                                              const color = colorInput.value;
+                                                                                                                                                                                                                                                                    const text = textInput.value;
 
-        yesButton.addEventListener('click', () => {
-            message.textContent = "Kai: ¡Sabía que dirías que sí! ¡Te amo!";
-            message.style.color = "green";
+                                                                                                                                                                                                                                                                          ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                                                                                                                                                                                                                                                                                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                                                                                                                                                                                                                                                                                      ctx.fillStyle = color;
+                                                                                                                                                                                                                                                                                            ctx.font = fontSize + "px monospace";
 
-            // spiderman enojado 
-        });
+                                                                                                                                                                                                                                                                                                  for (let i = 0; i < drops.length; i++) {
+                                                                                                                                                                                                                                                                                                          const x = i * fontSize;
+                                                                                                                                                                                                                                                                                                                  const y = drops[i] * fontSize;
+                                                                                                                                                                                                                                                                                                                          ctx.fillText(text, x, y);
 
-        noButton.addEventListener('click', () => {
-            message.textContent = ":(  Kai: ¿Estás segura?";
-            message.style.color = "red";
+                                                                                                                                                                                                                                                                                                                                  if (y > canvas.height && Math.random() > 0.975) {
+                                                                                                                                                                                                                                                                                                                                            drops[i] = 0;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                            drops[i] += 1;
+                                                                                                                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                          setInterval(draw, 100);
+                                                                                                                                                                                                                                                                                                                                                                              window.addEventListener("resize", () => {
+                                                                                                                                                                                                                                                                                                                                                                                    canvas.width = window.innerWidth;
+                                                                                                                                                                                                                                                                                                                                                                                          canvas.height = window.innerHeight;
+                                                                                                                                                                                                                                                                                                                                                                                                columns = canvas.width / fontSize;
+                                                                                                                                                                                                                                                                                                                                                                                                      drops = Array(Math.floor(columns)).fill(1);
+                                                                                                                                                                                                                                                                                                                                                                                                          });
+                                                                                                                                                                                                                                                                                                                                                                                                            </script>
+                                                                                                                                                                                                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                                                                                                                                                                                                            </html>
 
 
-            //Opcional: hacer que el botón de "no" se mueva aleatoriamente
-            //Comentado por defecto para evitar molestar al usuario, descomentar para activar
-             /*
-            const width = window.innerWidth - noButton.offsetWidth;
-            const height = window.innerHeight- noButton.offsetHeight;
-            noButton.style.position = 'absolute';
-            noButton.style.left = Math.random() * width + 'px';
-            noButton.style.top = Math.random() * height + 'px';
-            */
+                                                                                                                                                                                                                                                                                                                                                                                                
 
-        });
-    </script>
+                                                                                                                                                                                                                                                                                                                                                                                                            
 
-</body>
-</html>
+
+
+
