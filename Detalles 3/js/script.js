@@ -2,7 +2,7 @@
 
 // Configuración Matrix
 const LINE_COUNT = 30;
-const MATRIX_TEXT = "YULISSA ";
+const MATRIX_TEXT = "Xime ";
 const LOVE_CHARS = ["❤", "💖", "💕", "💞", "💝"];
 
 // Elementos interactivos
