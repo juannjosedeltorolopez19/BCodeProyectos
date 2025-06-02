@@ -1,5 +1,5 @@
 // script.js
-function mostrarCarta() {
+function mostrarCarta(te quiero) {
             const nombre = document.getElementById('nombreMama').value;
             if (!nombre.trim()) return alert('¡Necesito saber cómo te llamas, reina mami! 👑');
             
