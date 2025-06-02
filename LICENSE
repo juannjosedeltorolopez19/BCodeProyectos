@@ -1,57 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Te amo Yazmin ❤️</title>
+<style>
+body { background-color: #000; overflow: hidden; margin: 0; }
+canvas { display: block; } /* Evita espacio extra debajo del canvas */
+</style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-screen = turtle.Screen()
-screen.bgcolor("black")
-screen.title("Te amo Yazmin ❤️")
+const colors = ["red", "hotpink", "deeppink", "violet", "gold", "orange"];
+const numElements = 50; // Controla la cantidad de elementos
+const elements = [];
 
-colors = ["red", "hotpink", "deeppink", "violet", "gold", "orange"]
+function drawHeart(x, y, size, color) {
+      ctx.beginPath();
+        ctx.moveTo(x, y + size / 4);
+          ctx.bezierCurveTo(x, y - size * 1.25, x + size * 2, y - size * 1.25, x + size * 2, y + size / 4);
+            ctx.bezierCurveTo(x + size * 2, y + size * 2.5, x, y + size * 2.5, x, y + size / 4);
+              ctx.fillStyle = color;
+                ctx.fill();
+}
 
-def draw_heart(x, y, size, color):
-    turtle.penup()
-    turtle.goto(x, y)
-    turtle.pendown()
-    turtle.color(color)
-    turtle.begin_fill()
-    turtle.left(140)
-    turtle.forward(size)
-    for _ in range(200):
-        turtle.right(1)
-        turtle.forward(size * 0.01)
-    turtle.left(120)
-    for _ in range(200):
-        turtle.right(1)
-        turtle.forward(size * 0.01)
-    turtle.forward(size)
-    turtle.end_fill()
-    turtle.setheading(0)
+function drawFlower(x, y, size, color) {
+      ctx.fillStyle = color;
+        for (let i = 0; i < 6; i++) {
+                ctx.beginPath();
+                    ctx.ellipse(x, y, size / 2 , size, i * Math.PI/3, 0, 2 * Math.PI);
+                        ctx.fill();
+        }
+}
 
-def draw_flower(x, y, size, color):
-    turtle.penup()
-    turtle.goto(x, y)
-    turtle.setheading(0)
-    turtle.pendown()
-    turtle.color(color)
-    turtle.begin_fill()
-    for _ in range(6):
-        turtle.circle(size, 60)
-        turtle.left(120)
-        turtle.circle(size, 60)
-        turtle.left(60)
-    turtle.end_fill()
 
-turtle.speed(0)
-for _ in range(20):
-    x = random.randint(-300, 300)
-    y = random.randint(-250, 250)
-    size = random.randint(10, 30)
-    if random.choice([True, False]):
-        draw_heart(x, y, size, random.choice(colors))
-    else:
-        draw_flower(x, y, size, random.choice(colors))
+class FloatingElement {
+      constructor(x, y, size, type, color) {
+            this.x = x;
+                this.y = y;
+                    this.size = size;
+                        this.type = type;
+                            this.color = color;
+                                this.xSpeed = (Math.random() - 0.5) * 2; // Velocidad horizontal aleatoria
+                                    this.ySpeed = (Math.random() - 0.5) * 2; // Velocidad vertical aleatoria
+      }
 
-turtle.penup()
-turtle.goto(0, -280)
-turtle.color("white")
-turtle.write("Te amo Yazmin 💖", align="center", font=("Arial", 28, "bold"))
+        draw() {
+                this.type === 'heart' ? drawHeart(this.x, this.y, this.size, this.color) : drawFlower(this.x, this.y, this.size, this.color);
+        }
 
-turtle.hideturtle()
-turtle.done()
+          update() {
+                this.x += this.xSpeed;
+                    this.y += this.ySpeed;
+                        // Rebote en los bordes del canvas
+                            if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+                                      this.xSpeed = -this.xSpeed;
+                            }
+                                if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+                                          this.ySpeed = -this.ySpeed;
+                                }
+          }
+}
+
+// Crea los elementos flotantes (corazones y flores)
+for (let i = 0; i < numElements; i++) {
+        const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+                const size = Math.random() * 20 + 10;
+                    const type = Math.random() < 0.5 ? 'heart' : 'flower';
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+                            elements.push(new FloatingElement(x, y, size, type, color));
+}
+
+
+function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas en cada fotograma
+
+        for (const element of elements) {
+                element.draw();
+                    element.update();
+        }
+
+
+          ctx.font = "28px Arial";
+            ctx.fillStyle = "white";
+              ctx.textAlign = "center";
+                ctx.fillText("Te amo Yazmin 💖", canvas.width / 2, canvas.height * 0.9);
+
+                  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
+        }
+}
+}
+                                }
+                            }
+          }
+        }
+      }
+}
+        }
+}
+}
