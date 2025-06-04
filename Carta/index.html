@@ -1,44 +1,109 @@
-<!-- html -->
 <!DOCTYPE html>
 <html lang="es">
-<head >
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta para ti mi amor </title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Briseth :wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css"/>
-</head>
-<body> 
-    <div class="Briseth -card">
-        <div class="card-inner">
-            <div class="card-face card-front">
-                <div class="envelope"></div>
-                <h1>Quiero que sepas cuánto te amo mi nenita hermosa   </h1>
-                <p>Haz clic para descubrir cuánto te amo...</p>
-                <button class="open-btn">Abrir Carta</button>
-                <div class="img-Briseth ">
-                    <img src="./img/img.png" alt="description"/>
-                </div>
-            </div>
-            
-            <div class="card-face card-back">
-                <div class="img-mother2">
-                    <img src="./img/img2.png" alt="description"/>
-                </div>
-                <button class="close-btn">✕</button>
-                <h2 class="letter-header">Querida amada<br>mia </h2>
-                <div class="letter-content">
-                    <p>Hoy quiero dedicarte estas palabras desde lo más profundo de mi corazón. Eres la luz que guía mis pasos, el refugio en mis días difíciles y la alegría que ilumina mi vida.</p>
-                    <p>Tu <strong>amor</strong> es el regalo más grande que he recibido, tu <strong>fortaleza</strong> me inspira cada día, y tu <strong>ternura</strong> me ha enseñado el verdadero significado de la felicidad.</p>
-                    <p>quiero que sepas que tú llegaste a mi vida a devolverme la felicidad .Te amo ❤️</p>
-                </div>
-                <p class="letter-footer">Con todo mi amor, tu herculanito  </p>
-                <div class="img-Briseth -rosa">
-                    <img src="./img/rosa.png" alt="description"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-<script src="./js/script.js"></script>
-</html>
+<head>
+  <meta charset="UTF-8">
+    <title>Para Ti 💌</title>
+      <style>
+          body {
+                background: linear-gradient(to bottom right, #ffe6f0, #ffd6e0);
+                      font-family: 'Georgia', cursive;
+                            text-align: center;
+                                  padding: 50px;
+                                        overflow-x: hidden;
+                                            }
+
+                                                .carta {
+                                                      background: #fff0f5;
+                                                            border: 2px solid #ff99c8;
+                                                                  border-radius: 20px;
+                                                                        padding: 40px;
+                                                                              max-width: 600px;
+                                                                                    margin: auto;
+                                                                                          box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
+                                                                                                animation: fadeIn 2s ease-in-out;
+                                                                                                    }
+
+                                                                                                        h1 {
+                                                                                                              color: #d6336c;
+                                                                                                                    font-size: 2.5em;
+                                                                                                                          margin-bottom: 20px;
+                                                                                                                              }
+
+                                                                                                                                  p {
+                                                                                                                                        color: #5c1a2b;
+                                                                                                                                              font-size: 1.2em;
+                                                                                                                                                    line-height: 1.5;
+                                                                                                                                                        }
+
+                                                                                                                                                            .corazon {
+                                                                                                                                                                  font-size: 2em;
+                                                                                                                                                                        animation: latido 1.2s infinite;
+                                                                                                                                                                              color: red;
+                                                                                                                                                                                    margin: 20px 0;
+                                                                                                                                                                                        }
+
+                                                                                                                                                                                            @keyframes latido {
+                                                                                                                                                                                                  0%, 100% { transform: scale(1); }
+                                                                                                                                                                                                        50% { transform: scale(1.4); }
+                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                @keyframes fadeIn {
+                                                                                                                                                                                                                      from { opacity: 0; transform: translateY(-20px); }
+                                                                                                                                                                                                                            to { opacity: 1; transform: translateY(0); }
+                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                    button {
+                                                                                                                                                                                                                                          margin-top: 20px;
+                                                                                                                                                                                                                                                padding: 10px 20px;
+                                                                                                                                                                                                                                                      font-size: 1em;
+                                                                                                                                                                                                                                                            background: #ff99c8;
+                                                                                                                                                                                                                                                                  border: none;
+                                                                                                                                                                                                                                                                        border-radius: 10px;
+                                                                                                                                                                                                                                                                              cursor: pointer;
+                                                                                                                                                                                                                                                                                    color: white;
+                                                                                                                                                                                                                                                                                          transition: background 0.3s;
+                                                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                                                                  button:hover {
+                                                                                                                                                                                                                                                                                                        background: #ff69b4;
+                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                                .mensaje-oculto {
+                                                                                                                                                                                                                                                                                                                      display: none;
+                                                                                                                                                                                                                                                                                                                            margin-top: 20px;
+                                                                                                                                                                                                                                                                                                                                  font-size: 1.2em;
+                                                                                                                                                                                                                                                                                                                                        color: #b30059;
+                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                              </style>
+                                                                                                                                                                                                                                                                                                                                              </head>
+                                                                                                                                                                                                                                                                                                                                              <body>
+
+                                                                                                                                                                                                                                                                                                                                                <audio autoplay loop>
+                                                                                                                                                                                                                                                                                                                                                    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+                                                                                                                                                                                                                                                                                                                                                        Tu navegador no soporta música de fondo.
+                                                                                                                                                                                                                                                                                                                                                          </audio>
+
+                                                                                                                                                                                                                                                                                                                                                            <div class="carta">
+                                                                                                                                                                                                                                                                                                                                                                <div class="corazon">❤️</div>
+                                                                                                                                                                                                                                                                                                                                                                    <h1>Para la persona más especial</h1>
+                                                                                                                                                                                                                                                                                                                                                                        <p>
+                                                                                                                                                                                                                                                                                                                                                                              Cada día contigo es un regalo,<br>
+                                                                                                                                                                                                                                                                                                                                                                                    cada sonrisa tuya ilumina mi mundo.<br><br>
+                                                                                                                                                                                                                                                                                                                                                                                          Gracias por existir en mi vida. 💖
+                                                                                                                                                                                                                                                                                                                                                                                              </p>
+                                                                                                                                                                                                                                                                                                                                                                                                  <div class="corazon">❤️</div>
+                                                                                                                                                                                                                                                                                                                                                                                                      <button onclick="mostrarMensaje()">Haz clic para una sorpresa 💌</button>
+                                                                                                                                                                                                                                                                                                                                                                                                          <div id="sorpresa" class="mensaje-oculto">
+                                                                                                                                                                                                                                                                                                                                                                                                                ✨ Siempre estaré a tu lado, sin importar qué. Te amo con todo mi corazón. ✨
+                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                        <script>
+                                                                                                                                                                                                                                                                                                                                                                                                                            function mostrarMensaje() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                  document.getElementById('sorpresa').style.display = 'block';
+                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                                                                                                                        </script>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        
