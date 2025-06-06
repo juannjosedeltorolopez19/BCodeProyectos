@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versículos de Consuelo</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .option {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        .option:hover {
+            background-color: #e9ecef;
+            border-left-color: #2980b9;
+        }
+        .verse {
+            display: none;
+            background-color: #e8f4f8;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            border-left: 4px solid #2ecc71;
+        }
+        .verse h3 {
+            margin-top: 0;
+            color: #27ae60;
+        }
+        .back-btn {
+            display: block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .back-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Versículos de Consuelo</h1>
+        <p>Si no te encuentras bien, elige una opción con la cual te identificas:</p>
+        
+        <div class="option" onclick="showVerse('deprimido')">Si estás deprimido</div>
+        <div class="verse" id="deprimido">
+            <h3>Salmo 27</h3>
+            <p>El Señor es mi luz y mi salvación; ¿a quién temeré? El Señor es la fortaleza de mi vida; ¿de quién he de atemorizarme?</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('solo')">Si te sientes solo</div>
+        <div class="verse" id="solo">
+            <h3>Salmo 23</h3>
+            <p>El Señor es mi pastor, nada me faltará. En lugares de verdes pastos me hace descansar; junto a aguas de reposo me conduce.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('animo')">Cuando quieras ánimo</div>
+        <div class="verse" id="animo">
+            <h3>Josué 1</h3>
+            <p>Nadie te podrá hacer frente en todos los días de tu vida; como estuve con Moisés, estaré contigo; no te dejaré ni te desampararé.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('maltratado')">Cuando te traten mal</div>
+        <div class="verse" id="maltratado">
+            <h3>Juan 15</h3>
+            <p>Si el mundo os aborrece, sabed que a mí me ha aborrecido antes que a vosotros. Si fuerais del mundo, el mundo amaría lo suyo; pero porque no sois del mundo, yo os elegí del mundo, por eso el mundo os aborrece.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('fe')">Cuando necesites ejemplos de fe</div>
+        <div class="verse" id="fe">
+            <h3>Hebreos 11</h3>
+            <p>Es, pues, la fe la certeza de lo que se espera, la convicción de lo que no se ve. Porque por ella alcanzaron buen testimonio los antiguos.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('pecado')">Cuando hayas pecado</div>
+        <div class="verse" id="pecado">
+            <h3>Salmo 51</h3>
+            <p>Ten piedad de mí, oh Dios, conforme a tu misericordia; conforme a la multitud de tus piedades borra mis rebeliones. Lávame más y más de mi maldad, y límpiame de mi pecado.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('preocupado')">Si estás preocupado</div>
+        <div class="verse" id="preocupado">
+            <h3>Mateo 6:19-34</h3>
+            <p>No os afanéis por vuestra vida, qué habéis de comer o qué habéis de beber; ni por vuestro cuerpo, qué habéis de vestir. Mirad las aves del cielo, que no siembran, ni siegan, ni recogen en graneros; y vuestro Padre celestial las alimenta. ¿No valéis vosotros mucho más que ellas?</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('dios-lejano')">Cuando Dios parezca lejano</div>
+        <div class="verse" id="dios-lejano">
+            <h3>Salmo 139</h3>
+            <p>¿A dónde me iré de tu Espíritu? ¿Y a dónde huiré de tu presencia? Si subiere a los cielos, allí estás tú; y si en el Seol hiciere mi estrado, he aquí, allí tú estás.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('amargado')">Cuando estés amargado con alguien</div>
+        <div class="verse" id="amargado">
+            <h3>1 Corintios 13</h3>
+            <p>El amor es sufrido, es benigno; el amor no tiene envidia, el amor no es jactancioso, no se envanece; no hace nada indebido, no busca lo suyo, no se irrita, no guarda rencor.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('peligro')">Si estás en peligro</div>
+        <div class="verse" id="peligro">
+            <h3>Salmo 91</h3>
+            <p>El que habita al abrigo del Altísimo morará bajo la sombra del Omnipotente. Diré yo a Jehová: Esperanza mía, y castillo mío; mi Dios, en quien confiaré.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('nada-bien')">Cuando nada parece ir bien</div>
+        <div class="verse" id="nada-bien">
+            <h3>Salmo 37</h3>
+            <p>Confía en Jehová, y haz el bien; y habitarás en la tierra, y te apacentarás de la verdad. Deléitate asimismo en Jehová, y él te concederá las peticiones de tu corazón.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('miedo')">Si tienes miedo</div>
+        <div class="verse" id="miedo">
+            <h3>Salmo 27</h3>
+            <p>Jehová es mi luz y mi salvación; ¿de quién temeré? Jehová es la fortaleza de mi vida; ¿de quién he de atemorizarme?</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('perdon')">Si necesitas perdón</div>
+        <div class="verse" id="perdon">
+            <h3>Salmo 51</h3>
+            <p>Lávame de toda mi maldad, y límpiame de mi pecado. Porque yo reconozco mis rebeliones, y mi pecado está siempre delante de mí.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('fallado')">Cuando le has fallado a Dios</div>
+        <div class="verse" id="fallado">
+            <h3>2 Timoteo 2</h3>
+            <p>Si fuéremos infieles, él permanece fiel; Él no puede negarse a sí mismo.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('pasado')">Si tu pasado te persigue</div>
+        <div class="verse" id="pasado">
+            <h3>Colosenses 1:21</h3>
+            <p>Y a vosotros también, que erais en otro tiempo extraños y enemigos en vuestra mente, haciendo malas obras, ahora os ha reconciliado.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('debil')">Si te sientes débil</div>
+        <div class="verse" id="debil">
+            <h3>2 Corintios 12:9</h3>
+            <p>Y me ha dicho: Bástate mi gracia; porque mi poder se perfecciona en la debilidad. Por tanto, de buena gana me gloriaré más bien en mis debilidades, para que repose sobre mí el poder de Cristo.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('mal-hecho')">Si alguien te ha hecho mal</div>
+        <div class="verse" id="mal-hecho">
+            <h3>Colosenses 3:13</h3>
+            <p>Soportándoos unos a otros, y perdonándoos unos a otros si alguno tuviere queja contra otro. De la manera que Cristo os perdonó, así también hacedlo vosotros.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('venganza')">Si quieres vengarte</div>
+        <div class="verse" id="venganza">
+            <h3>Romanos 12:19</h3>
+            <p>No os venguéis vosotros mismos, amados míos, sino dejad lugar a la ira de Dios; porque escrito está: Mía es la venganza, yo pagaré, dice el Señor.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('ansioso')">Cuando estás ansioso</div>
+        <div class="verse" id="ansioso">
+            <h3>1 Pedro 5:7</h3>
+            <p>Echando toda vuestra ansiedad sobre él, porque él tiene cuidado de vosotros.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('rendirse')">Cuando quieres bajar los brazos</div>
+        <div class="verse" id="rendirse">
+            <h3>Lucas 11:5-13</h3>
+            <p>Pedid, y se os dará; buscad, y hallaréis; llamad, y se os abrirá. Porque todo aquel que pide, recibe; y el que busca, halla; y al que llama, se le abrirá.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('sufrir-bien')">Si sufres por hacer el bien</div>
+        <div class="verse" id="sufrir-bien">
+            <h3>1 Pedro 1:6-7</h3>
+            <p>En lo cual vosotros os alegráis, aunque ahora por un poco de tiempo, si es necesario, tengáis que ser afligidos en diversas pruebas, para que sometida a prueba vuestra fe, mucho más preciosa que el oro, el cual aunque perecedero se prueba con fuego, sea hallada en alabanza, gloria y honra cuando sea manifestado Jesucristo.</p>
+        </div>
+        
+        <div class="option" onclick="showVerse('sabiduria')">Si necesitas sabiduría</div>
+        <div class="verse" id="sabiduria">
+            <h3>Santiago 1:5-8</h3>
+            <p>Y si alguno de vosotros tiene falta de sabiduría, pídala a Dios, el cual da a todos abundantemente y sin reproche, y le será dada.</p>
+        </div>
+    </div>
+
+    <script>
+        function showVerse(id) {
+            // Ocultar todos los versículos primero
+            const allVerses = document.querySelectorAll('.verse');
+            allVerses.forEach(verse => {
+                verse.style.display = 'none';
+            });
+            
+            // Mostrar el versículo seleccionado
+            const selectedVerse = document.getElementById(id);
+            if (selectedVerse) {
+                selectedVerse.style.display = 'block';
+                
+                // Agregar botón de regreso si no existe
+                if (!selectedVerse.querySelector('.back-btn')) {
+                    const backBtn = document.createElement('button');
+                    backBtn.className = 'back-btn';
+                    backBtn.textContent = 'Volver a las opciones';
+                    backBtn.onclick = function() {
+                        selectedVerse.style.display = 'none';
+                    };
+                    selectedVerse.appendChild(backBtn);
+                }
+            }
+            
+            // Desplazarse al versículo seleccionado
+            selectedVerse.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
