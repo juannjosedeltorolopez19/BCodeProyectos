@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Matrix Love Effect</title>
+        <style>
+            body {
+                  margin: 0;
+                        overflow: hidden;
+                              background: black;
+                                  }
+
+                                      canvas {
+                                            display: block;
+                                                }
+
+                                                    #controls {
+                                                          position: fixed;
+                                                                top: 10px;
+                                                                      left: 10px;
+                                                                            z-index: 100;
+                                                                                  background: rgba(0, 0, 0, 0.7);
+                                                                                        padding: 10px;
+                                                                                              border-radius: 8px;
+                                                                                                  }
+
+                                                                                                      #controls label {
+                                                                                                            color: white;
+                                                                                                                  display: block;
+                                                                                                                        margin-top: 5px;
+                                                                                                                            }
+
+                                                                                                                                #controls input[type="color"],
+                                                                                                                                    #controls input[type="text"],
+                                                                                                                                        #controls input[type="range"] {
+                                                                                                                                              width: 100%;
+                                                                                                                                                  }
+                                                                                                                                                    </style>
+                                                                                                                                                    </head>
+                                                                                                                                                    <body>
+                                                                                                                                                      <div id="controls">
+                                                                                                                                                          <label>Velocidad:
+                                                                                                                                                                <input type="range" id="speed" min="1" max="30" value="10">
+                                                                                                                                                                    </label>
+                                                                                                                                                                        <label>Color:
+                                                                                                                                                                              <input type="color" id="color" value="#ff3399">
+                                                                                                                                                                                  </label>
+                                                                                                                                                                                      <label>Texto:
+                                                                                                                                                                                            <input type="text" id="text" value="My Love">
+                                                                                                                                                                                                </label>
+                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                    <canvas id="matrix"></canvas>
+
+                                                                                                                                                                                                      <script>
+                                                                                                                                                                                                          const canvas = document.getElementById("matrix");
+                                                                                                                                                                                                              const ctx = canvas.getContext("2d");
+
+                                                                                                                                                                                                                  canvas.width = window.innerWidth;
+                                                                                                                                                                                                                      canvas.height = window.innerHeight;
+
+                                                                                                                                                                                                                          let fontSize = 18;
+                                                                                                                                                                                                                              let columns = canvas.width / fontSize;
+                                                                                                                                                                                                                                  let drops = Array(Math.floor(columns)).fill(1);
+
+                                                                                                                                                                                                                                      const speedInput = document.getElementById("speed");
+                                                                                                                                                                                                                                          const colorInput = document.getElementById("color");
+                                                                                                                                                                                                                                              const textInput = document.getElementById("text");
+
+                                                                                                                                                                                                                                                  function draw() {
+                                                                                                                                                                                                                                                        const speed = parseInt(speedInput.value);
+                                                                                                                                                                                                                                                              const color = colorInput.value;
+                                                                                                                                                                                                                                                                    const text = textInput.value;
+
+                                                                                                                                                                                                                                                                          ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                                                                                                                                                                                                                                                                                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                                                                                                                                                                                                                                                                                      ctx.fillStyle = color;
+                                                                                                                                                                                                                                                                                            ctx.font = fontSize + "px monospace";
+
+                                                                                                                                                                                                                                                                                                  for (let i = 0; i < drops.length; i++) {
+                                                                                                                                                                                                                                                                                                          const x = i * fontSize;
+                                                                                                                                                                                                                                                                                                                  const y = drops[i] * fontSize;
+                                                                                                                                                                                                                                                                                                                          ctx.fillText(text, x, y);
+
+                                                                                                                                                                                                                                                                                                                                  if (y > canvas.height && Math.random() > 0.975) {
+                                                                                                                                                                                                                                                                                                                                            drops[i] = 0;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                            drops[i] += 1;
+                                                                                                                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                          setInterval(draw, 100);
+                                                                                                                                                                                                                                                                                                                                                                              window.addEventListener("resize", () => {
+                                                                                                                                                                                                                                                                                                                                                                                    canvas.width = window.innerWidth;
+                                                                                                                                                                                                                                                                                                                                                                                          canvas.height = window.innerHeight;
+                                                                                                                                                                                                                                                                                                                                                                                                columns = canvas.width / fontSize;
+                                                                                                                                                                                                                                                                                                                                                                                                      drops = Array(Math.floor(columns)).fill(1);
+                                                                                                                                                                                                                                                                                                                                                                                                          });
+                                                                                                                                                                                                                                                                                                                                                                                                            </script>
+                                                                                                                                                                                                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                                                                                                                                                                                                            </html>
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                
+
+                                                                                                                                                                                                                                                                                                                                                                                                            
+
+
+
+
