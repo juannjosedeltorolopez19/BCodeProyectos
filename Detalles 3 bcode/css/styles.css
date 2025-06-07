@@ -1,5 +1,7 @@
 /* styles.css   */
-
+body{
+    background-color:black;
+}
 .terminal {
     position: fixed;
     top: 0;
