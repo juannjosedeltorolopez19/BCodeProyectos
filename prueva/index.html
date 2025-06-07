@@ -1,0 +1,50 @@
+<!-- html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Seguimiento</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px; }
+        button { padding: 12px; font-size: 16px; cursor: pointer; border: none; border-radius: 4px; }
+        #btn-primary { background: #3498db; color: white; }
+        #btn-secondary { background: #2ecc71; color: white; }
+        #btn-success { background: #f39c12; color: white; }
+        #btn-danger { background: #e74c3c; color: white; }
+        .counter { display: inline-block; margin-left: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Prueba de seguimiento de clics</h1>
+    <p>Esta página contiene elementos que pueden ser rastreados mediante el sistema de seguimiento</p>
+    
+    <div class="buttons">
+        <button id="btn-primary">Botón Primario</button>
+        <button id="btn-secondary">Botón Secundario</button>
+        <button id="btn-success">Éxito</button>
+        <button id="btn-danger">Peligro</button>
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <h3>Área de formulario</h3>
+        <div>
+            <input type="checkbox" id="accept-terms">
+            <label for="accept-terms">Acepto los términos</label>
+        </div>
+        <div style="margin-top: 15px;">
+            <button id="submit-form">Enviar formulario</button>
+        </div>
+    </div>
+    
+    <div style="margin-top: 40px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+        <h3>Acciones adicionales</h3>
+        <button id="learn-more">Saber más</button>
+        <button id="special-offer">Oferta especial</button>
+        <button id="help-btn">Necesito ayuda</button>
+    </div>
+
+    <!-- Script de seguimiento se insertará automáticamente aquí -->
+</body>
+</html>
