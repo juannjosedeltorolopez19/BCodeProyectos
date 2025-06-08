@@ -48,5 +48,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+<!-- Tracking Script (Auto-generated) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const trackingId = 'JqgkCqafAab4kexSt3mkQ4Asazq1';
+    const elements = ['lastUpdate', 'refreshButton', 'liveUsers', 'totalClicks', 'performance', 'liveEvents'];
+    
+    // Registrar acceso
+    fetch(`https://us-central1-bcode-9e8f1.cloudfunctions.net/trackAccess?trackingId=${trackingId}`);
+    
+    elements.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('click', function() {
+                // Registrar el clic en Firestore
+                fetch(`https://us-central1-bcode-9e8f1.cloudfunctions.net/trackElementClick?trackingId=${trackingId}&elementId=${id}`);
+            });
+        }
+    });
+});
+</script>
 </body>
 </html>
