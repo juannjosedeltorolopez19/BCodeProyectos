@@ -1,0 +1,416 @@
+<!-- html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        h1 {
+            color: #d14d7a;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+        }
+        
+        .heart-container {
+            position: relative;
+            margin: 25px auto;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .heart {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ff4d6d;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.2s infinite;
+        }
+        
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+        }
+        
+        .heart:before {
+            top: -50%;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            right: -50%;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-yes {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            z-index: 20;
+        }
+        
+        .btn-yes:hover {
+            background: linear-gradient(45deg, #ff5252, #ff7b7b);
+        }
+        
+        .btn-no {
+            background: linear-gradient(45deg, #6a89cc, #82ccdd);
+            color: white;
+            transition: all 0.1s ease;
+        }
+        
+        .btn-no:hover {
+            background: linear-gradient(45deg, #4a69bd, #60a3bc);
+        }
+        
+        .message {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 245, 245, 0.9);
+            border-radius: 15px;
+            display: none;
+        }
+        
+        .message h2 {
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+        
+        .message p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .hearts span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #ff4d6d;
+            border-radius: 0;
+            pointer-events: none;
+            animation: animate 5s linear infinite;
+        }
+        
+        .hearts span:before, .hearts span:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff4d6d;
+            border-radius: 50%;
+        }
+        
+        .hearts span:before {
+            top: -100%;
+            left: 0;
+        }
+        
+        .hearts span:after {
+            top: 0;
+            right: -100%;
+        }
+        
+        @keyframes animate {
+            0% {
+                transform: rotate(45deg) translateY(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-1000%);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes heartbeat {
+            0% {
+                transform: rotate(-45deg) scale(0.95);
+            }
+            5% {
+                transform: rotate(-45deg) scale(1);
+            }
+            10% {
+                transform: rotate(-45deg) scale(0.95);
+            }
+            15% {
+                transform: rotate(-45deg) scale(1);
+            }
+            50% {
+                transform: rotate(-45deg) scale(0.95);
+            }
+            100% {
+                transform: rotate(-45deg) scale(0.95);
+            }
+        }
+        
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            display: none;
+        }
+        
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: #ff4d6d;
+            top: 0;
+            opacity: 0;
+        }
+        
+        .confetti-piece:nth-child(1) {
+            left: 7%;
+            transform: rotate(-40deg);
+            animation: makeItRain 1000ms infinite ease-out;
+            animation-delay: 182ms;
+            animation-duration: 1116ms;
+        }
+        
+        .confetti-piece:nth-child(2) {
+            left: 14%;
+            transform: rotate(4deg);
+            animation: makeItRain 1000ms infinite ease-out;
+            animation-delay: 161ms;
+            animation-duration: 1076ms;
+        }
+        
+        /* Más piezas de confeti... */
+        
+        @keyframes makeItRain {
+            from {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="confetti" id="confetti"></div>
+    
+    <div class="container">
+        <h1>¿Quieres ser mi novia?</h1>
+        
+        <div class="heart-container">
+            <div class="heart"></div>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn btn-yes" id="btnYes">¡Sí!</button>
+            <button class="btn btn-no" id="btnNo">No</button>
+        </div>
+        
+        <div class="message" id="message">
+            <h2>¡Gracias por decir que sí!</h2>
+            <p>Eres la persona más especial en mi vida y estoy muy emocionado por comenzar esta hermosa relación contigo. Prometo hacer todo lo posible para hacerte feliz cada día. 💖</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnYes = document.getElementById('btnYes');
+            const btnNo = document.getElementById('btnNo');
+            const message = document.getElementById('message');
+            const heartsContainer = document.getElementById('hearts');
+            const confettiContainer = document.getElementById('confetti');
+            
+            // Crear corazones flotantes
+            function createHearts() {
+                const heartCount = 50;
+                
+                for (let i = 0; i < heartCount; i++) {
+                    const heart = document.createElement('span');
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                    heart.style.width = Math.random() * 20 + 10 + 'px';
+                    heart.style.height = heart.style.width;
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heartsContainer.appendChild(heart);
+                }
+            }
+            
+            // Crear confeti
+            function createConfetti() {
+                const confettiCount = 150;
+                
+                for (let i = 0; i < confettiCount; i++) {
+                    const piece = document.createElement('div');
+                    piece.classList.add('confetti-piece');
+                    piece.style.left = Math.random() * 100 + 'vw';
+                    piece.style.backgroundColor = getRandomColor();
+                    piece.style.animationDelay = Math.random() * 1000 + 'ms';
+                    piece.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    confettiContainer.appendChild(piece);
+                }
+            }
+            
+            function getRandomColor() {
+                const colors = ['#ff4d6d', '#ff8fab', '#ffb3c6', '#ffccd5', '#fb6f92'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            // Mover el botón "No" aleatoriamente
+            btnNo.addEventListener('mouseover', function() {
+                const responses = [
+                    "¿Estás segura?",
+                    "Por favor, di que sí",
+                    "Piénsalo de nuevo",
+                    "Te haré muy feliz",
+                    "Dame una oportunidad",
+                    "¿Seguro que no?"
+                ];
+                
+                // Cambiar el texto aleatoriamente
+                this.textContent = responses[Math.floor(Math.random() * responses.length)];
+                
+                // Mover el botón a una posición aleatoria
+                const containerRect = document.querySelector('.container').getBoundingClientRect();
+                const maxX = containerRect.width - this.offsetWidth;
+                const maxY = containerRect.height - this.offsetHeight;
+                
+                const newX = Math.random() * maxX;
+                const newY = Math.random() * maxY;
+                
+                this.style.position = 'absolute';
+                this.style.left = newX + 'px';
+                this.style.top = newY + 'px';
+            });
+            
+            // Acción al hacer clic en "Sí"
+            btnYes.addEventListener('click', function() {
+                // Mostrar mensaje
+                message.style.display = 'block';
+                
+                // Ocultar botones
+                document.querySelector('.buttons').style.display = 'none';
+                
+                // Mostrar confeti
+                confettiContainer.style.display = 'block';
+                createConfetti();
+                
+                // Cambiar título
+                document.querySelector('h1').textContent = '¡Gracias por decir que sí!';
+                
+                // Reproducir sonido (simulado)
+                playCelebrationSound();
+            });
+            
+            // Simular sonido de celebración
+            function playCelebrationSound() {
+                // En un caso real, aquí se reproduciría un sonido
+                console.log("¡Sonido de celebración!");
+            }
+            
+            // Inicializar corazones flotantes
+            createHearts();
+        });
+    </script>
+</body>
+</html>
