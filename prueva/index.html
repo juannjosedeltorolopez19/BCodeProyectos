@@ -2,9 +2,99 @@
 <html>
 <head>
   <title>Prueba Firebase</title>
-  <!-- Inserta aquí el script generado -->
+
+<!-- Firebase SDK -->
+<script>
+  // Cargar SDKs de forma asíncrona
+  function loadFirebaseSDK() {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js';
+      script.onload = () => {
+        const scriptDB = document.createElement('script');
+        scriptDB.src = 'https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js';
+        scriptDB.onload = resolve;
+        document.head.appendChild(scriptDB);
+      };
+      document.head.appendChild(script);
+    });
+  }
+  
+  // Cargar e inicializar
+  loadFirebaseSDK().then(() => {
+    const firebaseConfig = {"apiKey":"AIzaSyAPqX2ScjLut1-aDWeDjBFhm8i8GzdviLs","authDomain":"bcode-9e8f1.firebaseapp.com","projectId":"bcode-9e8f1","storageBucket":"bcode-9e8f1.appspot.com","messagingSenderId":"451286588637","appId":"1:451286588637:web:41b4d0a0251e74e49ccf34","measurementId":"G-L5WHY20NHN"};
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+  });
+</script>
+
 </head>
 <body>
   <button id="btn-test">Probar Firebase</button>
+<!-- Tracking Script (Auto-generated) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const trackingId = 'JqgkCqafAab4kexSt3mkQ4Asazq1';
+    const elements = ['btn-test'];
+    
+    // Verificar carga de Firebase
+    function initFirebase() {
+        if (typeof firebase === 'undefined') {
+            setTimeout(initFirebase, 100);
+            return;
+        }
+        
+        // Configuración de Firebase
+        const firebaseConfig = {"apiKey":"AIzaSyAPqX2ScjLut1-aDWeDjBFhm8i8GzdviLs","authDomain":"bcode-9e8f1.firebaseapp.com","projectId":"bcode-9e8f1","storageBucket":"bcode-9e8f1.appspot.com","messagingSenderId":"451286588637","appId":"1:451286588637:web:41b4d0a0251e74e49ccf34","measurementId":"G-L5WHY20NHN"};
+        
+        // Inicializar Firebase si no está inicializado
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        
+        setupTracking();
+    }
+    
+    function setupTracking() {
+        // Función para registrar clics
+        function trackClick(elementId) {
+            const clickRef = firebase.firestore()
+                .collection('tracking').doc(trackingId)
+                .collection('clicks').doc();
+            
+            clickRef.set({
+                elementId: elementId,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                userAgent: navigator.userAgent,
+                screen: screen.width + 'x' + screen.height,
+                language: navigator.language
+            }).catch(error => console.error('Error tracking click:', error));
+        }
+        
+        // Registrar acceso
+        if (!sessionStorage.getItem('tracking_access_' + trackingId)) {
+            firebase.firestore().collection('tracking').doc(trackingId)
+                .update({
+                    accessCount: firebase.firestore.FieldValue.increment(1),
+                    lastAccess: firebase.firestore.FieldValue.serverTimestamp()
+                }).catch(error => console.error('Error tracking access:', error));
+            
+            sessionStorage.setItem('tracking_access_' + trackingId, 'true');
+        }
+        
+        // Configurar listeners
+        elements.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('click', () => trackClick(id));
+            }
+        });
+    }
+    
+    // Iniciar proceso
+    initFirebase();
+});
+</script>
 </body>
 </html>
