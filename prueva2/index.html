@@ -109,5 +109,127 @@ document.addEventListener('DOMContentLoaded', function() {
     checkFirebase();
 });
 </script>
+<!-- Chat Widget (Auto-generated) -->
+<div id="chat-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <button id="chat-toggle" style="width: 60px; height: 60px; border-radius: 50%; background: #6d28d9; color: white; border: none; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        <i class="fas fa-comments"></i>
+    </button>
+    
+    <div id="chat-modal" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; height: 450px; background: white; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+        <div style="display: flex; flex-direction: column; height: 100%;">
+            <div style="padding: 15px; background: #6d28d9; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h3 style="margin: 0;">Soporte en Vivo</h3>
+            </div>
+            <div id="chat-container" style="flex-grow: 1; overflow-y: auto; padding: 15px; background: #f9f9f9;"></div>
+            <div id="chat-input-area" style="padding: 15px; background: #eee; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <input type="text" id="chat-message" placeholder="Escribe un mensaje..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const trackingId = 'JqgkCqafAab4kexSt3mkQ4Asazq1';
+    let userName = localStorage.getItem('chatUserName_' + trackingId);
+    let chatInitialized = false;
+    
+    // Elementos UI
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatModal = document.getElementById('chat-modal');
+    const chatContainer = document.getElementById('chat-container');
+    const chatInput = document.getElementById('chat-message');
+    
+    // Mostrar/ocultar chat
+    chatToggle.addEventListener('click', () => {
+        if (!userName) {
+            userName = prompt('Por favor, ingresa tu nombre para chatear:');
+            if (userName) {
+                localStorage.setItem('chatUserName_' + trackingId, userName);
+                initializeChat();
+            }
+        } else {
+            chatModal.style.display = chatModal.style.display === 'none' ? 'block' : 'none';
+            if (!chatInitialized) initializeChat();
+        }
+    });
+    
+    function initializeChat() {
+        if (chatInitialized) return;
+        chatInitialized = true;
+        
+        // Verificar Firebase
+        if (typeof firebase === 'undefined') {
+            console.error('Firebase no está cargado');
+            return;
+        }
+        
+        // Configuración Firebase
+        const firebaseConfig = {"apiKey":"AIzaSyAPqX2ScjLut1-aDWeDjBFhm8i8GzdviLs","authDomain":"bcode-9e8f1.firebaseapp.com","projectId":"bcode-9e8f1","storageBucket":"bcode-9e8f1.appspot.com","messagingSenderId":"451286588637","appId":"1:451286588637:web:41b4d0a0251e74e49ccf34","measurementId":"G-L5WHY20NHN"};
+        
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        
+        const db = firebase.firestore();
+        const chatRef = db.collection('tracking').doc(trackingId).collection('chat');
+        
+        // Escuchar nuevos mensajes
+        chatRef.orderBy('timestamp').onSnapshot(snapshot => {
+            chatContainer.innerHTML = '';
+            
+            snapshot.forEach(doc => {
+                const msg = doc.data();
+                const msgEl = document.createElement('div');
+                msgEl.className = 'message ' + (msg.sender === 'user' ? 'user-message' : 'admin-message');
+                msgEl.innerHTML = `
+                    <strong>${msg.sender === 'user' ? userName : 'Soporte'}:</strong> ${msg.text}
+                    <div class="timestamp">${new Date(msg.timestamp?.toDate()).toLocaleTimeString()}</div>
+                `;
+                chatContainer.appendChild(msgEl);
+            });
+            
+            // Scroll al final
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        });
+        
+        // Enviar mensaje
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim() !== '') {
+                chatRef.add({
+                    text: chatInput.value.trim(),
+                    sender: 'user',
+                    userName: userName,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                chatInput.value = '';
+            }
+        });
+    }
+});
+</script>
+<style>
+    #chat-container {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+    .message {
+        margin-bottom: 10px;
+        padding: 8px;
+        border-radius: 5px;
+    }
+    .user-message {
+        background: #d1e7ff;
+        text-align: right;
+    }
+    .admin-message {
+        background: #e9ecef;
+    }
+    .timestamp {
+        font-size: 0.7em;
+        color: #666;
+        margin-top: 3px;
+    }
+</style>
 </body>
 </html>
