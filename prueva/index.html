@@ -15,6 +15,20 @@
         #btn-danger { background: #e74c3c; color: white; }
         .counter { display: inline-block; margin-left: 10px; font-weight: bold; }
     </style>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script>
+  // Configuración de Firebase
+  const firebaseConfig = {"apiKey":"AIzaSyAPqX2ScjLut1-aDWeDjBFhm8i8GzdviLs","authDomain":"bcode-9e8f1.firebaseapp.com","projectId":"bcode-9e8f1","storageBucket":"bcode-9e8f1.appspot.com","messagingSenderId":"451286588637","appId":"1:451286588637:web:41b4d0a0251e74e49ccf34","measurementId":"G-L5WHY20NHN"};
+  
+  // Inicializar Firebase
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+</script>
+
 </head>
 <body>
     <h1>Prueba de seguimiento de clics</h1>
@@ -30,5 +44,56 @@
     
 
     
+<!-- Tracking Script (Auto-generated) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const trackingId = 'JqgkCqafAab4kexSt3mkQ4Asazq1';
+    const elements = ['btn-success'];
+    
+    // Configuración de Firebase
+    const firebaseConfig = {"apiKey":"AIzaSyAPqX2ScjLut1-aDWeDjBFhm8i8GzdviLs","authDomain":"bcode-9e8f1.firebaseapp.com","projectId":"bcode-9e8f1","storageBucket":"bcode-9e8f1.appspot.com","messagingSenderId":"451286588637","appId":"1:451286588637:web:41b4d0a0251e74e49ccf34","measurementId":"G-L5WHY20NHN"};
+    
+    // Inicializar Firebase si no está inicializado
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    
+    // Función para registrar clics
+    function trackClick(elementId) {
+        // Crear referencia a Firestore
+        const clickRef = firebase.firestore()
+            .collection('tracking').doc(trackingId)
+            .collection('clicks').doc();
+        
+        // Registrar el clic
+        clickRef.set({
+            elementId: elementId,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            userAgent: navigator.userAgent,
+            screen: screen.width + 'x' + screen.height,
+            language: navigator.language
+        }).catch(error => console.error('Error tracking click:', error));
+    }
+    
+    // Registrar acceso (solo una vez por sesión)
+    if (!sessionStorage.getItem('tracking_access_' + trackingId)) {
+        firebase.firestore().collection('tracking').doc(trackingId)
+            .update({
+                accessCount: firebase.firestore.FieldValue.increment(1),
+                lastAccess: firebase.firestore.FieldValue.serverTimestamp()
+            }).catch(error => console.error('Error tracking access:', error));
+        
+        sessionStorage.setItem('tracking_access_' + trackingId, 'true');
+    }
+    
+    // Configurar listeners para elementos
+    elements.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('click', () => trackClick(id));
+        }
+    });
+});
+</script>
 </body>
 </html>
