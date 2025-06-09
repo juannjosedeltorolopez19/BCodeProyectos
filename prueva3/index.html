@@ -1,0 +1,60 @@
+<!-- html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botones Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        #btn2 {
+            background-color: #f44336;
+        }
+        
+        #btn2:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Botones Simples</h1>
+    
+    <button id="btn1">Botón 1</button>
+    <button id="btn2">Botón 2</button>
+
+    <script>
+        document.getElementById('btn1').addEventListener('click', function() {
+            alert('Has clickeado el Botón 1');
+        });
+        
+        document.getElementById('btn2').addEventListener('click', function() {
+            alert('Has clickeado el Botón 2');
+        });
+    </script>
+</body>
+</html>
