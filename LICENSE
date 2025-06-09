@@ -1,113 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Te amo Yazmin ❤️</title>
-<style>
-body { background-color: #000; overflow: hidden; margin: 0; }
-canvas { display: block; } /* Evita espacio extra debajo del canvas */
-</style>
-</head>
-<body>
-<canvas id="myCanvas"></canvas>
-<script>
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+MIT License
 
-const colors = ["red", "hotpink", "deeppink", "violet", "gold", "orange"];
-const numElements = 50; // Controla la cantidad de elementos
-const elements = [];
+Copyright (c) [2025] [BCode ]
 
-function drawHeart(x, y, size, color) {
-      ctx.beginPath();
-        ctx.moveTo(x, y + size / 4);
-          ctx.bezierCurveTo(x, y - size * 1.25, x + size * 2, y - size * 1.25, x + size * 2, y + size / 4);
-            ctx.bezierCurveTo(x + size * 2, y + size * 2.5, x, y + size * 2.5, x, y + size / 4);
-              ctx.fillStyle = color;
-                ctx.fill();
-}
+Por la presente se otorga permiso, libre de cargos, a cualquier persona que obtenga una copia
+de este software y de los archivos de documentación asociados (el "Software"), a utilizar
+el Software sin restricción, incluyendo, sin limitación, los derechos de uso, copia,
+modificación, fusión, publicación, distribución, sublicencia y/o venta de copias del Software,
+y a permitir a las personas a las que se les proporcione el Software a hacer lo mismo,
+siempre que se cumplan las siguientes condiciones:
 
-function drawFlower(x, y, size, color) {
-      ctx.fillStyle = color;
-        for (let i = 0; i < 6; i++) {
-                ctx.beginPath();
-                    ctx.ellipse(x, y, size / 2 , size, i * Math.PI/3, 0, 2 * Math.PI);
-                        ctx.fill();
-        }
-}
+El aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias
+o partes sustanciales del Software.
 
-
-class FloatingElement {
-      constructor(x, y, size, type, color) {
-            this.x = x;
-                this.y = y;
-                    this.size = size;
-                        this.type = type;
-                            this.color = color;
-                                this.xSpeed = (Math.random() - 0.5) * 2; // Velocidad horizontal aleatoria
-                                    this.ySpeed = (Math.random() - 0.5) * 2; // Velocidad vertical aleatoria
-      }
-
-        draw() {
-                this.type === 'heart' ? drawHeart(this.x, this.y, this.size, this.color) : drawFlower(this.x, this.y, this.size, this.color);
-        }
-
-          update() {
-                this.x += this.xSpeed;
-                    this.y += this.ySpeed;
-                        // Rebote en los bordes del canvas
-                            if (this.x + this.size > canvas.width || this.x - this.size < 0) {
-                                      this.xSpeed = -this.xSpeed;
-                            }
-                                if (this.y + this.size > canvas.height || this.y - this.size < 0) {
-                                          this.ySpeed = -this.ySpeed;
-                                }
-          }
-}
-
-// Crea los elementos flotantes (corazones y flores)
-for (let i = 0; i < numElements; i++) {
-        const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-                const size = Math.random() * 20 + 10;
-                    const type = Math.random() < 0.5 ? 'heart' : 'flower';
-                        const color = colors[Math.floor(Math.random() * colors.length)];
-                            elements.push(new FloatingElement(x, y, size, type, color));
-}
-
-
-function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas en cada fotograma
-
-        for (const element of elements) {
-                element.draw();
-                    element.update();
-        }
-
-
-          ctx.font = "28px Arial";
-            ctx.fillStyle = "white";
-              ctx.textAlign = "center";
-                ctx.fillText("Te amo Yazmin 💖", canvas.width / 2, canvas.height * 0.9);
-
-                  requestAnimationFrame(animate);
-}
-
-animate();
-</script>
-
-</body>
-</html>
-        }
-}
-}
-                                }
-                            }
-          }
-        }
-      }
-}
-        }
-}
-}
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O
+IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A GARANTÍAS DE COMERCIALIZACIÓN, IDONEIDAD
+PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO LOS AUTORES O
+TITULARES DEL COPYRIGHT SERÁN RESPONSABLES DE NINGUNA RECLAMACIÓN, DAÑOS U OTRAS
+RESPONSABILIDADES, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O CUALQUIER OTRO MOTIVO,
+QUE SURJA DE O EN CONEXIÓN CON EL SOFTWARE O EL USO U OTRO TIPO DE ACCIONES EN EL
+SOFTWARE.
