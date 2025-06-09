@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Amor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(5px);
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            color: #e74c3c;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #btnYes {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        #btnYes:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        #btnNo {
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        #btnNo:hover {
+            background-color: #bdc3c7;
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 15px solid transparent;
+            border-image: url('https://i.imgur.com/ZYwD0hA.png') 30 round;
+            animation: scaleUp 0.5s;
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+
+        .letter-content {
+            margin-top: 20px;
+            line-height: 1.6;
+            color: #333;
+            text-align: left;
+        }
+
+        .letter-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background-image: url('https://i.imgur.com/3JYQZ1x.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .rejection {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .crying-face {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .rejection-message {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .try-again {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+
+    <div class="container" id="mainContainer">
+        <h2>¿Quieres ser mi novia?</h2>
+        <div class="buttons">
+            <button id="btnYes">¡Sí!</button>
+            <button id="btnNo">No</button>
+        </div>
+        <div id="messages"></div>
+    </div>
+
+    <div class="modal" id="modalYes">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <div class="letter-image"></div>
+            <h2>¡Gracias por decir que sí!</h2>
+            <div class="letter-content">
+                <p>Mi amor,</p>
+                <p>Desde el momento en que te conocí, supe que eras alguien especial. Cada día a tu lado es un regalo que atesoro con todo mi corazón.</p>
+                <p>Prometo hacerte feliz, cuidarte y amarte como te mereces. Esta es solo el comienzo de nuestra hermosa historia juntos.</p>
+                <p>Con todo mi amor,</p>
+                <p>❤️</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="rejection" id="rejection">
+        <div class="crying-face">😭😭😭</div>
+        <div class="rejection-message" id="rejectionMessage"></div>
+        <button class="try-again" id="tryAgain">Intentar de nuevo</button>
+        <audio id="cryingSound" loop>
+            <source src="https://www.soundjay.com/human/sounds/crying-01.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnYes = document.getElementById('btnYes');
+            const btnNo = document.getElementById('btnNo');
+            const modalYes = document.getElementById('modalYes');
+            const closeModal = document.getElementById('closeModal');
+            const rejection = document.getElementById('rejection');
+            const tryAgain = document.getElementById('tryAgain');
+            const messages = document.getElementById('messages');
+            const mainContainer = document.getElementById('mainContainer');
+            const rejectionMessage = document.getElementById('rejectionMessage');
+            const cryingSound = document.getElementById('cryingSound');
+            const heartsContainer = document.getElementById('hearts');
+
+            // Mensajes para cuando dice que no
+            const rejectionMessages = [
+                "¿Estás segura? ¡Piénsalo bien!",
+                "Pero si somos perfectos juntos...",
+                "Mi corazón se está rompiendo 💔",
+                "¿Qué tengo que hacer para convencerte?",
+                "Por favor, dame una oportunidad",
+                "Sin ti, mi vida no tiene sentido",
+                "¿En serio quieres verme sufrir así?",
+                "No puedo aceptar un no por respuesta",
+                "Te prometo hacerte feliz todos los días",
+                "Eres el amor de mi vida, por favor di que sí"
+            ];
+
+            // Crear corazones flotantes
+            function createHearts() {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = 3 + Math.random() * 7 + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heartsContainer.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 10000);
+            }
+
+            setInterval(createHearts, 300);
+
+            // Al hacer clic en Sí
+            btnYes.addEventListener('click', function() {
+                modalYes.style.display = 'flex';
+                mainContainer.style.display = 'none';
+            });
+
+            // Cerrar modal
+            closeModal.addEventListener('click', function() {
+                modalYes.style.display = 'none';
+                mainContainer.style.display = 'block';
+            });
+
+            // Al hacer clic en No
+            let clickCount = 0;
+            btnNo.addEventListener('click', function() {
+                if (clickCount < 5) {
+                    // Mostrar mensajes persuasivos
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message-container');
+                    messageDiv.textContent = rejectionMessages[clickCount];
+                    messages.appendChild(messageDiv);
+                    
+                    // Eliminar mensaje después de 3 segundos
+                    setTimeout(() => {
+                        messageDiv.remove();
+                    }, 3000);
+                    
+                    clickCount++;
+                    
+                    // Hacer que el botón Sí sea más grande
+                    btnYes.style.transform = `scale(${1 + clickCount*0.1})`;
+                    
+                    // Mover el botón No a posición aleatoria después del tercer clic
+                    if (clickCount >= 3) {
+                        btnNo.style.position = 'absolute';
+                        const containerRect = mainContainer.getBoundingClientRect();
+                        const maxX = containerRect.width - btnNo.offsetWidth - 20;
+                        const maxY = containerRect.height - btnNo.offsetHeight - 20;
+                        
+                        btnNo.style.left = Math.random() * maxX + 'px';
+                        btnNo.style.top = Math.random() * maxY + 'px';
+                    }
+                } else {
+                    // Mostrar pantalla de rechazo
+                    rejection.style.display = 'flex';
+                    mainContainer.style.display = 'none';
+                    cryingSound.play();
+                    
+                    // Mostrar mensaje aleatorio
+                    rejectionMessage.textContent = rejectionMessages[Math.floor(Math.random() * rejectionMessages.length)];
+                }
+            });
+
+            // Intentar de nuevo
+            tryAgain.addEventListener('click', function() {
+                rejection.style.display = 'none';
+                mainContainer.style.display = 'block';
+                cryingSound.pause();
+                cryingSound.currentTime = 0;
+                
+                // Resetear posición del botón No
+                btnNo.style.position = 'static';
+                btnNo.style.left = 'auto';
+                btnNo.style.top = 'auto';
+                
+                // Resetear contador
+                clickCount = 0;
+                btnYes.style.transform = 'scale(1)';
+            });
+
+            // Cerrar modal al hacer clic fuera del contenido
+            modalYes.addEventListener('click', function(e) {
+                if (e.target === modalYes) {
+                    modalYes.style.display = 'none';
+                    mainContainer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
