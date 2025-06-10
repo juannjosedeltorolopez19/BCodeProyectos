@@ -3,7 +3,7 @@
 // Configuración Matrix
 const LINE_COUNT = 30;
 const MATRIX_TEXT = "TE AMO ";
-const LOVE_CHARS = ["❤", "💖", "💕", "💞", "💝"];
+const LOVE_CHARS = ["❤", "🌹", "💕", "🌹", "💝"];
 
 // Elementos interactivos
 const centro = document.querySelector('.centro');
