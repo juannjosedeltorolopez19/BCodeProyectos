@@ -7,7 +7,6 @@ const LOVE_CHARS = ["❤", "🌹", "💕", "🌹", "💝"];
 
 // Elementos interactivos
 const centro = document.querySelector('.centro');
-const hiddenImage = document.querySelector('.hidden-image');
 const audioElement = document.getElementById('backgroundAudio');
 
 // Controlador de clic para el centro
