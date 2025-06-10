@@ -2,7 +2,7 @@
 
 // Configuración Matrix
 const LINE_COUNT = 30;
-const MATRIX_TEXT = "TE QUIERO ALE ";
+const MATRIX_TEXT = "TE QUIERO";
 const LOVE_CHARS = ["❤", "🌹", "💕", "🌹", "💝"];
 
 // Elementos interactivos
