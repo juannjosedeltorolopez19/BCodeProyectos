@@ -13,7 +13,7 @@ function initMatrix() {
         line.style.animation = `scroll ${5 + i / 2}s linear infinite`;
         line.style.animationDelay = `${i * 0.3}s`;
         line.textContent = MATRIX_TEXT.repeat(window.innerWidth / 50);
-        container.appendChild(line);
+        containner.appendChild(line);
     }
 }
 
