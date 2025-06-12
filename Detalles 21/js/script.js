@@ -1,5 +1,5 @@
 // Configuración Matrix
-const LINE_COUNT = 30;
+const LINE_COUNT = 39;
 const MATRIX_TEXT = "TE AMO ";
 const LOVE_CHARS = ["💞"];
 
