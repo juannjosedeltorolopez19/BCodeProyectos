@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bubbles love ❤️</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <audio id="bg-music" loop>
+    <source src="audio/musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <div class="message">Mi cabeza cuando te piensa ❤️</div>
+  <div id="bubbles-text"></div>
+
+  <script>
+    // Intenta reproducir la música en cuanto el usuario haga clic
+    document.addEventListener('click', function playMusicOnce() {
+      const music = document.getElementById('bg-music');
+      music.play().catch(() => {
+        console.log("El navegador bloqueó el autoplay.");
+      });
+      // Solo una vez
+      document.removeEventListener('click', playMusicOnce);
+    });
+  </script>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
