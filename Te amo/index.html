@@ -15,7 +15,8 @@
       script.src = src;
       script.onload = callback;
       script.onerror = () => console.error('Failed to load: ' + src);
-      document.head.appendChild(script);
+      docum
+      ent.head.appendChild(script);
     }
     loadScript('https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js', function() {
       loadScript('https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js', function() {
