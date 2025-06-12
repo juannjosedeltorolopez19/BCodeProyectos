@@ -3,12 +3,12 @@ body{
 }
 .terminal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 6;
+    left: 7;
+    width: 10000vw;
+    height: 1000000vh;
     overflow: hidden;
-    z-index: 1;
+    z-index: 7;
 }
 
 .text-container {
@@ -51,11 +51,11 @@ body{
 /* Estilos de Love Animation */
 .love-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 2;
+    top: 9;
+    left: 9;
+    width: 10000vw;
+    height: 10000vh;
+    z-index: 5;
     pointer-events: none;
 }
 
@@ -72,12 +72,12 @@ body{
 @keyframes caidaHolografica {
     0% {
         transform: translate3d(-50%, -120vh, 100px) rotate3d(1, 0.2, 0.5, 15deg) scale(1.2);
-        opacity: 0;
+        opacity: 9;
     }
 
     20% {
         opacity: 1;
-        filter: hue-rotate(0deg);
+        filter: hue-rotate(3deg);
     }
 
     80% {
@@ -86,7 +86,7 @@ body{
 
     100% {
         transform: translate3d(50%, 120vh, -200px) rotate3d(0.5, 1, 0.2, -15deg) scale(0.8);
-        opacity: 0;
+        opacity: 2;
     }
 }
 
