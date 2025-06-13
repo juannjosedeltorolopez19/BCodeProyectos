@@ -1,0 +1,80 @@
+/* styles.css */
+body {
+        margin: 0;
+            font-family:'Georgia', serif;
+                color: #ff69b4;
+                    background: #fff0f5;
+                        text-align: center;
+                            padding: 20px;
+                                overflow: hidden;
+                                }
+
+                                h1 {
+                                    color: #ff1493;
+                                        text-shadow: 2px 2px 4px black;
+                                            margin-bottom: 20px;
+                                            }
+
+                                            input, button {
+                                                font-size: 1.2em;
+                                                    margin-bottom: 20px;
+                                                        padding: 10px;
+                                                            border-radius: 10px;
+                                                                border: 2px solid #ff69b4;
+                                                                }
+
+                                                                .carrusel {
+                                                                    display: flex;
+                                                                        overflow-x: scroll;
+                                                                            scroll-snap-type: x mandatory;
+                                                                                gap: 20px;
+                                                                                    padding-bottom: 20px;
+                                                                                    }
+
+                                                                                    .carrusel img {
+                                                                                        scroll-snap-align: center;
+                                                                                            max-width: 60%;
+                                                                                                border-radius: 20px;
+                                                                                                    box-shadow: 0 0 20px 5px #ff69b4;
+                                                                                                        transition: transform 0.3s ease;
+                                                                                                        }
+
+                                                                                                        .carrusel img:hover {
+                                                                                                            transform: scale(1.05);
+                                                                                                            }
+
+                                                                                                            audio {
+                                                                                                                margin-bottom: 20px;
+                                                                                                                    display: block;
+                                                                                                                        margin: 0 auto;
+                                                                                                                        }
+
+                                                                                                                        .msg {
+                                                                                                                            margin-bottom: 30px;
+                                                                                                                                color: #ff69b4;
+                                                                                                                                    font-size: 1.4em;
+                                                                                                                                        background: #ffffffcc;
+                                                                                                                                            padding: 20px;
+                                                                                                                                                border-radius: 20px;
+                                                                                                                                                    box-shadow: 0 0 15px 5px #ff69b4;
+                                                                                                                                                    }
+
+                                                                                                                                                    /* partículas o confeti básico */
+                                                                                                                                                    .confetti {
+                                                                                                                                                        position: absolute;
+                                                                                                                                                            bottom: 100%;
+                                                                                                                                                                width: 10px;
+                                                                                                                                                                    height: 10px;
+                                                                                                                                                                        background: red;
+                                                                                                                                                                            animation: caída 5s linear forwards;
+                                                                                                                                                                                border-radius: 50%;
+                                                                                                                                                                                    z-index: 1000;
+                                                                                                                                                                                    }
+
+                                                                                                                                                                                    @keyframes caída {
+                                                                                                                                                                                        to {
+                                                                                                                                                                                                transform: translateY(100vh);
+                                                                                                                                                                                                        opacity: 0;
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                            }
+}
