@@ -1,4 +1,4 @@
-/* styles.css   */
+
 body{
     background-color:black;
 }
@@ -171,30 +171,4 @@ body{
     transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     z-index: 4;
     border-radius: 15px;
-    box-shadow: 0 0 50px rgba(255, 105, 180, 0.5);
-}
-
-.hidden-image.active {
-    visibility: visible;
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate(360deg);
-}
-
-#backgroundAudio {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .centro {
-        font-size: 4rem;
-        padding: 15px 30px;
-    }
-
-    .centro span {
-        font-size: 2rem;
-    }
-
-    .hidden-image {
-        max-width: 90vw;
-    }
-}
+    box
