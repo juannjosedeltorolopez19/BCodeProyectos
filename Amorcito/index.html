@@ -1,0 +1,40 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+        <title>Lluvia de TE AMO</title>
+            <style>
+                    body {
+                                margin: 0;
+                                            overflow: hidden;
+                                                        background-color: #000; /* Negro puro para mayor contraste */
+                                                                    font-family: 'Segoe UI', sans-serif; 
+                                                                                cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6699" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>'), auto;
+                                                                                        }
+                                                                                                canvas {
+                                                                                                            display: block;  /*  Evita espacio extra debajo del canvas */
+                                                                                                                    }
+                                                                                                                            .floating-text {
+                                                                                                                                        position: absolute;
+                                                                                                                                                    color: #ff6699;
+                                                                                                                                                                font-size: 2rem;
+                                                                                                                                                                            font-weight: bold;
+                                                                                                                                                                                        pointer-events: none;
+                                                                                                                                                                                                    animation: floatUp 1.5s ease-out forwards;
+                                                                                                                                                                                                                text-shadow: 0 0 10px rgba(255, 102, 153, 0.8); /* Sombra más suave y difuminada */
+                                                                                                                                                                                                                            transform: translate(-50%, -50%);
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                            @keyframes floatUp {
+                                                                                                                                                                                                                                                        0% {
+                                                                                                                                                                                                                                                                        opacity: 0;
+                                                                                                                                                                                                                                                                                        transform: translate(-50%, -100%) scale(1.5);
+                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                               50% {  /*  Punto medio de la animación con mayor escala */
+                                                                                                                                                                                                                                                                                                                               transform: translate(-50%, -60%) scale(1.8);
+                                                                                                                                                                                                                                                                                                                                           }
+                                                                                                                                                                                                                                                                                                                                                       100% {
+                                                                                                                                                                                                                                                                                                                                                                       opacity: 0; /* Desaparece al final */
+                                                                                                                                                                                                                                                                                                                                                                                       transform: translate(-50%, -150%) scale(1);
+                                                                                                                                                                                                                                                                                                                                                                                                   }
+                                                                                                                                                                                                                                                                                                                                                                                                           }
