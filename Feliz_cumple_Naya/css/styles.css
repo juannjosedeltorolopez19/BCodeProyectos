@@ -1,0 +1,68 @@
+/* styles.css */
+body {
+    margin: 0;
+      background-color: black;
+        font-family: 'Comic Sans MS', cursive;
+          color: #fff;
+            text-align: center;
+              overflow: hidden;
+              }
+
+              h1 {
+                font-size: 2.5em;
+                  color: #ff90c2;
+                    animation: parpadeo 1s infinite alternate;
+                    }
+
+                    p {
+                      font-size: 1.2em;
+                        margin: 10px;
+                          color: #ffdeec;
+                          }
+
+                          .gif-central {
+                            width: 300px;
+                              margin-top: 20px;
+                                border-radius: 20px;
+                                  box-shadow: 0 0 25px #ffb6f0;
+                                  }
+
+                                  .centro {
+                                    font-size: 1.8em;
+                                      margin-top: 15px;
+                                        color: #ffd6f5;
+                                          animation: subir 2s ease-in-out infinite;
+                                          }
+
+                                          .sticker {
+                                            width: 80px;
+                                              margin: 10px;
+                                                animation: flotar 4s ease-in-out infinite;
+                                                }
+
+                                                .efecto-bloom {
+                                                  animation: brillo 10s ease-in-out infinite;
+                                                  }
+
+                                                  @keyframes parpadeo {
+                                                    0% { opacity: 1; }
+                                                      100% { opacity: 0.5; }
+                                                      }
+
+                                                      @keyframes flotar {
+                                                        0%, 100% { transform: translateY(0); }
+                                                          50% { transform: translateY(-15px); }
+                                                          }
+
+                                                          @keyframes subir {
+                                                            0% { transform: translateY(0); }
+                                                              50% { transform: translateY(-10px); }
+                                                                100% { transform: translateY(0); }
+                                                                }
+
+                                                                @keyframes brillo {
+                                                                  0% { filter: brightness(1); }
+                                                                    50% { filter: brightness(1.3); }
+                                                                      100% { filter: brightness(1); }
+                                                                      }
+}
