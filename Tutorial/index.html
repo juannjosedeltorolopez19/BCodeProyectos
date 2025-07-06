@@ -1,33 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bubbles love ❤️</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <meta charset="UTF-8">
+    <title>Lluvia de Frases Románticas</title>
+      <style>
+          body {
+                margin: 0;
+                      background: #000;
+                            overflow: hidden;
+                                  font-family: 'Arial', sans-serif;
+                                      }
+                                          #boton {
+                                                position: fixed;
+                                                      top: 20px;
+                                                            left: 50%;
+                                                                  transform: translateX(-50%);
+                                                                        background: #ff007f;
+                                                                              color: white;
+                                                                                    font-size: 24px;
+                                                                                          font-weight: bold;
+                                                                                                padding: 20px 40px;
+                                                                                                      border: none;
+                                                                                                            border-radius: 50px;
+                                                                                                                  cursor: pointer;
+                                                                                                                        box-shadow: 0 0 20px #ff00aa, 0 0 40px #ff00aa, 0 0 60px #ff00aa;
+                                                                                                                              animation: brillo 2s infinite alternate;
+                                                                                                                                  }
 
-  <audio id="bg-music" loop>
-    <source src="audio/musica.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
-  </audio>
+                                                                                                                                      @keyframes brillo {
+                                                                                                                                            from {
+                                                                                                                                                    box-shadow: 0 0 10px #ff00aa, 0 0 20px #ff00aa, 0 0 30px #ff00aa;
+                                                                                                                                                          }
+                                                                                                                                                                to {
+                                                                                                                                                                        box-shadow: 0 0 30px #ff00aa, 0 0 60px #ff00aa, 0 0 90px #ff00aa;
+                                                                                                                                                                              }
+                                                                                                                                                                                  }
 
-  <div class="message">Mi cabeza cuando te piensa ❤️</div>
-  <div id="bubbles-text"></div>
+                                                                                                                                                                                      .frase {
+                                                                                                                                                                                            position: absolute;
+                                                                                                                                                                                                  color: #fff;
+                                                                                                                                                                                                        font-size: 20px;
+                                                                                                                                                                                                              opacity: 0.9;
+                                                                                                                                                                                                                    pointer-events: none;
+                                                                                                                                                                                                                          white-space: nowrap;
+                                                                                                                                                                                                                                animation: caer 5s linear forwards;
+                                                                                                                                                                                                                                      text-shadow: 0 0 10px #fff;
+                                                                                                                                                                                                                                          }
 
-  <script>
-    // Intenta reproducir la música en cuanto el usuario haga clic
-    document.addEventListener('click', function playMusicOnce() {
-      const music = document.getElementById('bg-music');
-      music.play().catch(() => {
-        console.log("El navegador bloqueó el autoplay.");
-      });
-      // Solo una vez
-      document.removeEventListener('click', playMusicOnce);
-    });
-  </script>
+                                                                                                                                                                                                                                              @keyframes caer {
+                                                                                                                                                                                                                                                    0% {
+                                                                                                                                                                                                                                                            transform: translateY(-50px);
+                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                        transform: translateY(100vh);
+                                                                                                                                                                                                                                                                                                opacity: 0;
+                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                                                                            </style>
+                                                                                                                                                                                                                                                                                                            </head>
+                                                                                                                                                                                                                                                                                                            <body>
 
-  <script src="js/script.js"></script>
-</body>
-</html>
+                                                                                                                                                                                                                                                                                                            <button id="boton">TE AMO</button>
+
+                                                                                                                                                                                                                                                                                                            <script>
+                                                                                                                                                                                                                                                                                                              const frases = [
+                                                                                                                                                                                                                                                                                                                  "Eres mi sueño hecho realidad",
+                                                                                                                                                                                                                                                                                                                      "Te amo más de lo que puedo expresar",
+                                                                                                                                                                                                                                                                                                                          "Eres mi sol en los días nublados",
+                                                                                                                                                                                                                                                                                                                              "Gracias por existir",
+                                                                                                                                                                                                                                                                                                                                  "Contigo todo es perfecto",
+                                                                                                                                                                                                                                                                                                                                      "Eres el amor de mi vida",
+                                                                                                                                                                                                                                                                                                                                          "No dejo de pensar en ti",
+                                                                                                                                                                                                                                                                                                                                              "Eres mi felicidad",
+                                                                                                                                                                                                                                                                                                                                                  "Mi corazón es tuyo",
+                                                                                                                                                                                                                                                                                                                                                      "Siempre juntos"
+                                                                                                                                                                                                                                                                                                                                                        ];
+
+                                                                                                                                                                                                                                                                                                                                                          const boton = document.getElementById('boton');
+
+                                                                                                                                                                                                                                                                                                                                                            boton.addEventListener('click', () => {
+                                                                                                                                                                                                                                                                                                                                                                for (let i = 0; i < 15; i++) {
+                                                                                                                                                                                                                                                                                                                                                                      crearFrase();
+                                                                                                                                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                                                                                                                                            });
+
+                                                                                                                                                                                                                                                                                                                                                                              function crearFrase() {
+                                                                                                                                                                                                                                                                                                                                                                                  const frase = document.createElement('div');
+                                                                                                                                                                                                                                                                                                                                                                                      frase.className = 'frase';
+                                                                                                                                                                                                                                                                                                                                                                                          frase.textContent = frases[Math.floor(Math.random() * frases.length)];
+                                                                                                                                                                                                                                                                                                                                                                                              frase.style.left = Math.random() * 100 + 'vw';
+                                                                                                                                                                                                                                                                                                                                                                                                  frase.style.fontSize = (16 + Math.random() * 14) + 'px';
+                                                                                                                                                                                                                                                                                                                                                                                                      document.body.appendChild(frase);
+
+                                                                                                                                                                                                                                                                                                                                                                                                          frase.addEventListener('animationend', () => {
+                                                                                                                                                                                                                                                                                                                                                                                                                frase.remove();
+                                                                                                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                                                                                                      </script>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                      </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                      </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                      
