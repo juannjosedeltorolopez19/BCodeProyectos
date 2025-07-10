@@ -75,7 +75,7 @@ function setupSurpriseButton() {
                                 <i class="fas fa-heart" style="color: #ff6b8b;"></i> ¡Te Amo! <i class="fas fa-heart" style="color: #ff6b8b;"></i>
                             </h2>
                             <p style="font-size: 1.4rem; line-height: 1.6; margin-bottom: 2rem; color: #5a3a44;">
-                                Eres la persona más increíble que he conocido. <br>
+                                Eres la persona más tierna y sensible que conozco. <br>
                                 Gracias por estar en mi vida y por hacerme tan feliz cada día. <br>
                                 Prometo amarte, cuidarte y hacerte sonreír por siempre.
                             </p>
