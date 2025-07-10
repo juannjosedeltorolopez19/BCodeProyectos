@@ -76,7 +76,7 @@ function setupSurpriseButton() {
                             </h2>
                             <p style="font-size: 1.4rem; line-height: 1.6; margin-bottom: 2rem; color: #5a3a44;">
                                 Eres la persona más tierna y sensible que conozco. <br>
-                                Gracias por estar en mi vida y por hacerme tan feliz cada día. <br>
+                                Gracias por esforzarte en hacer que mis ojos te vean y valió la pena haberte dado una oportunidad, me haces feliz. <br>
                                 Prometo amarte, cuidarte y hacerte sonreír por siempre.
                             </p>
                             <button id="closeBtn" style="background: #a66378; color: white; border: none; padding: 1rem 2.5rem; border-radius: 50px; font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease;">
