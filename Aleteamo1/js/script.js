@@ -1,4 +1,4 @@
-const PASSWORD = "alejandra";
+const PASSWORD = "anny";
 const accessOverlay = document.getElementById('accessOverlay');
 const accessForm = document.getElementById('accessForm');
 const passwordInput = document.getElementById('passwordInput');
