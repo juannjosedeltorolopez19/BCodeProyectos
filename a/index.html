@@ -1,0 +1,215 @@
+<!-- index.html --><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carta interactiva con mensaje</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top right, #ff9a9e, #fad0c4);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-container {
+    perspective: 1000px;
+  }
+
+  .card {
+    width: 350px;
+    height: 250px;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border-radius: 15px;
+  }
+
+  .card.open {
+    transform: rotateY(180deg);
+    cursor: default;
+  }
+
+  .front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .front {
+    background: linear-gradient(135deg, #d74e09, #f25757);
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+    box-shadow: inset 0 0 40px rgba(255,255,255,0.3);
+    user-select: none;
+  }
+
+  .back {
+    background: white;
+    color: #333;
+    transform: rotateY(180deg);
+    overflow-y: auto;
+  }
+
+  .back h2 {
+    color: #d74e09;
+  }
+
+  .back p {
+    font-size: 1.1em;
+    line-height: 1.4;
+    margin: 10px 0 20px;
+  }
+
+  .buttons {
+    margin-top: 10px;
+  }
+
+  button {
+    padding: 12px 22px;
+    margin: 10px 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .yes {
+    background-color: #28a745;
+    color: white;
+  }
+
+  .no {
+    background-color: #dc3545;
+    color: white;
+    position: relative;
+  }
+
+  /* Corazones flotantes */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    transform: rotate(45deg);
+    animation: float linear infinite;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -10px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: -10px;
+    top: 0;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) rotate(45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="card-container">
+  <div class="card" id="card">
+    <div class="front">
+      📬 Toca para abrir la carta
+    </div>
+    <div class="back">
+      <h2>💌 Te pido perdón</h2>
+      <p>
+        Perdóname por no haber cumplido lo que acordamos. Tu confianza significa mucho para mí, y estoy decidido/a a corregir mis errores y recuperar lo que hemos construido juntos ¿Me das otra oportunidad?
+      </p>
+
+      <div class="buttons">
+        <button class="yes" onclick="gracias()">Sí, te amo muchisimo 💖</button>
+        <button class="no" onmouseover="mover(this)">No 😢</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  Tu navegador no soporta audio.
+</audio>
+
+<script>
+  const card = document.getElementById('card');
+  card.addEventListener('click', () => {
+    if (!card.classList.contains('open')) {
+      card.classList.add('open');
+      createHearts();
+    }
+  });
+
+  function gracias() {
+    alert("¡Gracias! Prometo no fallarte otra vez, te amo infinitamente💕");
+  }
+
+  function mover(btn) {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 200 - 100;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  function createHearts() {
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 5 + 3) + "s";
+      heart.style.animationDelay = (Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+
+      // Eliminar corazón tras animación para no saturar
+      heart.addEventListener('animationend', () => {
+        heart.remove();
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
