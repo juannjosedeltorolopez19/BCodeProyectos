@@ -1,0 +1,103 @@
+<!-- Index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+    <title>Medicamentos Antiinflamatorios OTC</title>
+      <style>
+          body {
+                font-family: Arial, sans-serif;
+                      background: #f0f8ff;
+                            padding: 30px;
+                                  color: #333;
+                                      }
+
+                                          h1 {
+                                                text-align: center;
+                                                      color: #2a5d84;
+                                                          }
+
+                                                              .accordion {
+                                                                    background-color: #e3f2fd;
+                                                                          color: #333;
+                                                                                cursor: pointer;
+                                                                                      padding: 15px;
+                                                                                            width: 100%;
+                                                                                                  border: none;
+                                                                                                        text-align: left;
+                                                                                                              outline: none;
+                                                                                                                    font-size: 18px;
+                                                                                                                          transition: background-color 0.3s ease;
+                                                                                                                                border-radius: 8px;
+                                                                                                                                      margin-top: 10px;
+                                                                                                                                          }
+
+                                                                                                                                              .accordion:hover {
+                                                                                                                                                    background-color: #bbdefb;
+                                                                                                                                                        }
+
+                                                                                                                                                            .active, .accordion:active {
+                                                                                                                                                                  background-color: #90caf9;
+                                                                                                                                                                      }
+
+                                                                                                                                                                          .panel {
+                                                                                                                                                                                padding: 15px;
+                                                                                                                                                                                      display: none;
+                                                                                                                                                                                            background-color: white;
+                                                                                                                                                                                                  overflow: hidden;
+                                                                                                                                                                                                        border: 1px solid #cfd8dc;
+                                                                                                                                                                                                              border-radius: 5px;
+                                                                                                                                                                                                                    margin-top: 5px;
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                          </style>
+                                                                                                                                                                                                                          </head>
+                                                                                                                                                                                                                          <body>
+
+                                                                                                                                                                                                                            <h1>💊 Antiinflamatorios OTC</h1>
+                                                                                                                                                                                                                            <p> Trabajo de Sabina Machado Puelles:</p>
+
+                                                                                                                                                                                                                              <button class="accordion">Ibuprofeno</button>
+                                                                                                                                                                                                                                <div class="panel">
+                                                                                                                                                                                                                                    <p><strong>Marca común:</strong> Advil, Motrin</p>
+                                                                                                                                                                                                                                        <p><strong>Usos:</strong> Dolor leve a moderado, fiebre, inflamación.</p>
+                                                                                                                                                                                                                                            <p><strong>Dosis típica:</strong> 200-400 mg cada 4-6 horas.</p>
+                                                                                                                                                                                                                                                <p><strong>Precauciones:</strong> Puede causar irritación gástrica. No recomendado en úlcera activa.</p>
+                                                                                                                                                                                                                                                  </div>
+
+                                                                                                                                                                                                                                                    <button class="accordion">Naproxeno</button>
+                                                                                                                                                                                                                                                      <div class="panel">
+                                                                                                                                                                                                                                                          <p><strong>Marca común:</strong> Aleve</p>
+                                                                                                                                                                                                                                                              <p><strong>Usos:</strong> Artritis, dolor muscular, dolor de cabeza.</p>
+                                                                                                                                                                                                                                                                  <p><strong>Dosis típica:</strong> 220 mg cada 8-12 horas.</p>
+                                                                                                                                                                                                                                                                      <p><strong>Precauciones:</strong> Similar al ibuprofeno. Más duración, pero también más riesgo gastrointestinal si se abusa.</p>
+                                                                                                                                                                                                                                                                        </div>
+
+                                                                                                                                                                                                                                                                          <button class="accordion">Ácido acetilsalicílico (Aspirina)</button>
+                                                                                                                                                                                                                                                                            <div class="panel">
+                                                                                                                                                                                                                                                                                <p><strong>Marca común:</strong> Aspirina</p>
+                                                                                                                                                                                                                                                                                    <p><strong>Usos:</strong> Dolor leve, fiebre, antiagregante plaquetario.</p>
+                                                                                                                                                                                                                                                                                        <p><strong>Dosis típica:</strong> 325-650 mg cada 4-6 horas.</p>
+                                                                                                                                                                                                                                                                                            <p><strong>Precauciones:</strong> No en menores de 18 años (riesgo de síndrome de Reye), puede causar sangrado estomacal.</p>
+                                                                                                                                                                                                                                                                                              </div>
+
+                                                                                                                                                                                                                                                                                                <button class="accordion">Paracetamol (Acetaminofén)</button>
+                                                                                                                                                                                                                                                                                                  <div class="panel">
+                                                                                                                                                                                                                                                                                                      <p><strong>Marca común:</strong> Panadol, Tylenol</p>
+                                                                                                                                                                                                                                                                                                          <p><strong>Usos:</strong> Dolor leve, fiebre. No es un antiinflamatorio potente, pero se incluye comúnmente.</p>
+                                                                                                                                                                                                                                                                                                              <p><strong>Dosis típica:</strong> 500-1000 mg cada 6 horas (máx. 4g al día).</p>
+                                                                                                                                                                                                                                                                                                                  <p><strong>Precauciones:</strong> No exceder dosis máxima. Riesgo de daño hepático en sobredosis.</p>
+                                                                                                                                                                                                                                                                                                                    </div>
+
+                                                                                                                                                                                                                                                                                                                      <script>
+                                                                                                                                                                                                                                                                                                                          const accordions = document.querySelectorAll(".accordion");
+                                                                                                                                                                                                                                                                                                                              accordions.forEach(acc => {
+                                                                                                                                                                                                                                                                                                                                    acc.addEventListener("click", function () {
+                                                                                                                                                                                                                                                                                                                                            this.classList.toggle("active");
+                                                                                                                                                                                                                                                                                                                                                    const panel = this.nextElementSibling;
+                                                                                                                                                                                                                                                                                                                                                            panel.style.display = panel.style.display === "block" ? "none" : "block";
+                                                                                                                                                                                                                                                                                                                                                                  });
+                                                                                                                                                                                                                                                                                                                                                                      });
+                                                                                                                                                                                                                                                                                                                                                                        </script>
+
+                                                                                                                                                                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                                                                                                                                                                        </html>
