@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Shanet</title>
+    <link href="https://www.instagram.com/reel/DMyyi2XifXA/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to top, #fcd1e3, #ffe6f0);
+            font-family: 'Fredoka', sans-serif;
+            color: #333;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 60px;
+            font-size: 3em;
+            color: #ff1493;
+            text-shadow: 2px 2px 5px #000;
+            animation: bounce 2s infinite;
+        }
+
+        .mensaje {
+            margin: 30px auto;
+            width: 90%;
+            max-width: 600px;
+            font-size: 1.3em;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .pagina {
+            display: none;
+            padding: 40px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .pagina.activa {
+            display: block;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .navegacion {
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(255, 20, 147, 0.4);
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        .balloon {
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -100px;
+            animation: float 8s linear infinite;
+            box-shadow: inset -5px -10px rgba(255, 255, 255, 0.3);
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            width: 2px;
+            height: 25px;
+            background: #666;
+            transform: translateX(-50%);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .mensaje {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎉 ¡Feliz Cumpleaños, Shanet! 🎉</h1>
+
+    <div class="mensaje">
+        Hoy cumples un año más de vida y quiero que sepas algo muy importante:<br><br>
+        No estés triste, sigue adelante con todo lo que te propones.<br><br>
+        Yo <strong>confío en ti</strong> y <strong>creo en ti</strong> con todo mi corazón.<br><br>
+        ¡Eres una persona increíble y mereces lo mejor del mundo!<br><br>
+        Hoy 1 de agosto ten el mejor dia de tu vida disfrutalo mucho<br><br>
+        <em>Atentamente, Franck 💖</em>
+    </div>
+
+    <!-- Botón a WhatsApp -->
+    <a href="https://www.youtube.com/watch?v=Hl3MtjiXxr0"
+        target="_blank">
+        <button>🎁 Haz clic aquí para tu sorpresa</button>
+    </a>
+
+    <!-- Álbum interactivo -->
+    <div class="pagina activa" id="pagina1">
+        <h2>🌅 Capítulo 1: Cuando te conocí</h2>
+        <p>Todo comenzó con una sonrisa que iluminó mi día. Desde entonces, supe que tu forma de ser dejaría huella en
+            mí.</p>
+        <div class="navegacion">
+            <button onclick="mostrarPagina(2)">Siguiente ➡️</button>
+        </div>
+    </div>
+
+    <div class="pagina" id="pagina2">
+        <h2>🌟 Capítulo 2: Momentos especiales</h2>
+        <p>Desde las pequeñas charlas hasta los grandes sueños, cada instante contigo tiene un valor único.</p>
+        <div class="navegacion">
+            <button onclick="mostrarPagina(1)">⬅️ Anterior</button>
+            <button onclick="mostrarPagina(3)">Siguiente ➡️</button>
+        </div>
+    </div>
+
+    <div class="pagina" id="pagina3">
+        <h2>🎥 Capítulo 3: Un mensaje especial en video</h2>
+         <p>Desde me encuentre te mando un abrazo profundo hacia ti , te quiero mucho y cumple con todo lo que me dijiste.</p>
+        <div class="navegacion">
+            <button onclick="mostrarPagina(1)">⬅️ Anterior</button>
+        </div>
+    </div>
+        
+
+    <script>
+        function mostrarPagina(num) {
+            const paginas = document.querySelectorAll('.pagina');
+            paginas.forEach(p => p.classList.remove('activa'));
+            document.getElementById('pagina' + num).classList.add('activa');
+        }
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            const colors = ['#ff4d4d', '#ff66cc', '#66ccff', '#ffff66', '#99ff99', '#ff9933'];
+            balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.animationDuration = (6 + Math.random() * 4) + 's';
+            document.body.appendChild(balloon);
+            setTimeout(() => balloon.remove(), 10000);
+        }
+
+        setInterval(createBalloon, 400);
+    </script>
+
+</body>
+
+</html> index.html -->
