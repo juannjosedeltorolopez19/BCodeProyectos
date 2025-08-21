@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', function () {
     audioPlayer.volume = 0.4;
 
     let isPlaying = false;
+    let autoTriggered = false;
+
+    function toggleAudio() {
+        if (!isPlaying) {
+            audioPlayer.play();
+            if (audioControl) audioControl.innerHTML = '<i class="fas fa-pause"></i>';
+            isPlaying = true;
+        }
+    }
 
     if (audioControl) {
         audioControl.addEventListener('click', function () {
@@ -24,7 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
             isPlaying = !isPlaying;
         });
     }
+    function autoPlayTrigger() {
+        if (!autoTriggered) {
+            toggleAudio();
+            autoTriggered = true;
+            document.removeEventListener('scroll', autoPlayTrigger);
+            document.removeEventListener('click', autoPlayTrigger);
+        }
+    }
 
+    document.addEventListener('scroll', autoPlayTrigger);
+    document.addEventListener('click', autoPlayTrigger);
+
+    // ✨ Animaciones al hacer scroll
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -48,4 +69,3 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(el);
     });
 });
-
