@@ -44,4 +44,4 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(el);
     });
 });
-    </script >
+    
